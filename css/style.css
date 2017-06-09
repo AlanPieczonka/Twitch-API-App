@@ -1,0 +1,110 @@
+/*
+Orange color: #e67e22;
+*/
+
+
+
+/*////////////////////////////////////////////////////////////////////////////*/
+/* BASIC SETUP */
+/*////////////////////////////////////////////////////////////////////////////*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #6441A4;
+    color: #FFFFFF;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    font-size: 62.5%;
+}
+
+.clearfix {zoom: 1} 
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/*////////////////////////////////////////////////////////////////////////////*/
+/* REUSABLE COMPONENTS */
+/*////////////////////////////////////////////////////////////////////////////*/
+
+.row {
+    max-width: 1200px;
+    margin: 0 auto;  /*margin: 0 auto;*/
+}
+
+section {
+    padding: 80px 0;
+}
+
+.box {
+    padding: 1%;
+}
+
+
+.div__flexbox{
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.div__flexbox--center-row{
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+
+h1{
+    font-family: 'Patrick Hand SC', cursive;
+    font-size: 5rem;
+}
+.icon__twitch{
+    width: 128px;
+    height: 128px;
+}
+
+
+
+
+
+/*FOOTER*/
+footer{
+    height: 80px;
+}
+.lastheading{
+  float: right;
+}
+h6{
+  font-size: 1.8rem;
+  font-weight: 400;
+  display: inline;
+  color: #FFFFFF;
+}
+
+.githubimg{
+  width: 50px;
+  height: 50px;
+  position: relative;
+  top: 15px;
+  margin-left: 15px;
+}
