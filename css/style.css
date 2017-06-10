@@ -55,7 +55,7 @@ section {
     display: flex;
 }
 
-.div__flexbox--center-row{
+.div__flexbox--center{
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -73,23 +73,68 @@ section {
     align-items: center;
 }
 
+.div__flexbox--spacebetween{
+    justify-content: space-between;
+}
 
 h1{
     font-family: 'Patrick Hand SC', cursive;
     font-size: 5rem;
 }
+
 .icon__twitch{
     width: 128px;
     height: 128px;
 }
 
+main{
 
+}
 
+.div__general{
+    margin: 0 auto;
+    max-width: 80%;
+    border: 2px solid #000000;
+    height: auto;
+    padding: 15px 40px 15px 40px;
+}
 
+span{
+    font-family: 'Patrick Hand SC', cursive;
+    font-size: 4rem;
+    color: #000000;
+}
+
+.span__online{
+    color: #87D37C;
+}
+
+.span__offline{
+    color: #F62459;
+}
+
+.img__thumbnail{
+    width: 30%;
+    height: 60%;
+    border-radius: 15%;
+}
+
+.icon{
+    font-size: 7rem;
+}
+
+.div__triangle{
+  width: 0;
+  height: 0;
+  display: inline;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 38px solid #FFFFFF;
+}
 
 /*FOOTER*/
 footer{
-    height: 80px;
+  height: 80px;
 }
 .lastheading{
   float: right;

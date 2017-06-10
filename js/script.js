@@ -1,12 +1,12 @@
-"use strict"
+'use strict';
 
 //Client ID: 2s3o8o681qxk9kf6142w86k0i5x8a7
 //stremears: ESL_SC2, nalcs1, pgl
 
-/*const streamers = ['ESL_SC2', 'nalcs1', 'pgl'];
+/*const streamers = ['ESL_SC2', 'bobross', 'esportnow', 'syndicate', nalcs1', 'pgl'];
 console.log("Streamers: " + streamers[1]);*/
 
-class Stream{
+class Stream {
     constructor(){
         this.streamers = ['ESL_SC2', 'nalcs1', 'pgl'];
     }
@@ -15,10 +15,11 @@ class Stream{
     }
 }
 
-var myStream = new Stream();
+const myStream = new Stream();
 console.log(myStream.people[0]); //interesting
 
-function myAsyncFunction(url) {
+
+const myAsyncFunction = (url) => {
   return new Promise((resolve, reject) => { 
     const request = new XMLHttpRequest(); 
     request.open("GET", url, true); 
@@ -38,16 +39,23 @@ function myAsyncFunction(url) {
 
 
 //https://www.youtube.com/watch?v=yswb4SkDoj0
-let myPromise = myAsyncFunction('https://api.twitch.tv/kraken/streams/nalcs1');
-myPromise.then(function(tweets){
+let myPromise = myAsyncFunction('https://api.twitch.tv/kraken/streams/esportnow');
+myPromise.then((tweets) => {
     console.log(tweets)
     console.log("BOOOYA");
     return myAsyncFunction('https://api.twitch.tv/kraken/streams/ESL_SC2')
-}).then(function(friends){
+}).then((friends) => {
     console.log(friends)
     console.log("Freindsyyy");
-}).catch(function(error){
+}).catch((error) => {
     console.log("catch error: " + error);
 });
 
-
+/*
+if(object!==null){
+    give param to DOM functions
+}
+else{
+    give just fucking "this stream is dead or sth";
+}
+*/
