@@ -38,10 +38,10 @@
         -ms-flex-align: center;
         align-items: center;
     }
-    
+/*    
     .div__flexbox--spacebetween{
         display: none;
-    }
+    }*/
     
     h1{
         margin-top: 0px;
