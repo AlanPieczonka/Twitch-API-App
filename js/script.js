@@ -46,17 +46,17 @@ const myAsyncFunction = (url) => {
 let myPromise = myAsyncFunction('https://api.twitch.tv/kraken/streams/' + myStream.people[0]);
 myPromise.then((bobross) => {
     console.log(bobross);
-    functionDom(bobross, "BobRoss", "iconclass0", "additionalclass0");
+    functionDom(bobross, "BobRoss", "iconclass0", "additionalclass0", "iconcloseclass0");
     console.log("bobross")
     return myAsyncFunction('https://api.twitch.tv/kraken/streams/' + myStream.people[1]);
 }).then((eslsc2) => {
     console.log(eslsc2)
-    functionDom(eslsc2, "eslc2", "iconclass1", "additionalclass1");
+    functionDom(eslsc2, "eslc2", "iconclass1", "additionalclass1", "iconcloseclass1");
     console.log("eslsc2");
     return myAsyncFunction('https://api.twitch.tv/kraken/streams/' + myStream.people[2]);
 }).then((twitch) =>{
     console.log(twitch);
-    functionDom(twitch, "twitch", "iconclass2", "additionalclass2");
+    functionDom(twitch, "twitch", "iconclass2", "additionalclass2", "iconcloseclass2");
     console.log("twitch");
 }).catch((error) => {
     console.log("catch error: " + error);
@@ -66,7 +66,7 @@ myPromise.then((bobross) => {
 
 
 //make this function to take 2 parametres, data and name to always display streamer's name;
-const functionDom = (data, name, iconClass, additionalClass) => {
+const functionDom = (data, name, iconClass, additionalClass, iconCloseClass) => {
     
     const main = document.getElementsByTagName('main')[0];
     const loading__icon = document.getElementsByClassName('loadingicon')[0];
@@ -75,9 +75,10 @@ const functionDom = (data, name, iconClass, additionalClass) => {
     
     if(data.stream!==null){
 
-        let div__general__online = `<div class="row"><div class="div__general div__flexbox div__flexbox--center div__flexbox--spacebetween"><span class="span__online"><a href="${data.stream.channel.url}" target="_blank">online</a></span><span class="span__name">${name}</span><img class="img__thumbnail" src="${data.stream.channel.video_banner}"><i id="testing" class="fa fa-expand expandicon ${iconClass}" aria-hidden="true"></i></div></div>`
+        let div__general__online = `<div class="row"><div class="div__general div__flexbox div__flexbox--center div__flexbox--spacebetween "><span class="span__online"><a href="${data.stream.channel.url}" target="_blank">online</a></span><span class="span__name">${name}</span><img class="img__thumbnail" src="${data.stream.channel.video_banner}"><i id="testing" class="fa fa-expand expandicon ${iconClass}" aria-hidden="true"></i></div></div>`
         
-        let div__additional__online = `<div class="row"><div class="div__additional ${additionalClass}"><div class="div__additional__child div__additional__child--game"><i class="fa fa-gamepad div__additional__icon" aria-hidden="true"></i><h1 class="viewers">game</h1><h1 class="viewers">${data.stream.channel.game}</h1></div><div class="div__additional__child div__additional__child--viewers"><i class="fa fa-gamepad div__additional__icon" aria-hidden="true"></i><h1 class="viewers">viewers</h1><h1 class="viewers">${data.stream.viewers}</h1></div><div class="clearfix"></div><div class="div__additional__child div__additional__child--url"><i class="fa fa-external-link div__additional__icon" aria-hidden="true"></i><h1 class="viewers">url</h1><h1 class="viewers">${data.stream.channel.url}</h1></div><div class="div__additional__child div__additional__child--status"><i class="fa fa-comment div__additional__icon" aria-hidden="true"></i><h1 class="viewers">status</h1><h1 class="viewers">${data.stream.channel.status}</h1></div></div></div>`
+        let div__additional__online = `<div class="row"><div class="div__additional ${additionalClass}"><div class="div__additional__child div__additional__child--game"><i class="fa fa-gamepad div__additional__icon" aria-hidden="true"></i><h1 class="viewers">game</h1><h1 class="viewers">${data.stream.channel.game}</h1></div><div class="div__additional__child div__additional__child--viewers iconrelative">                        <i class="fa fa-times-circle-o icon__close ${iconCloseClass}" aria-hidden="true"></i>
+<i class="fa fa-gamepad div__additional__icon" aria-hidden="true"></i><h1 class="viewers">viewers</h1><h1 class="viewers">${data.stream.viewers}</h1></div><div class="clearfix"></div><div class="div__additional__child div__additional__child--url"><i class="fa fa-external-link div__additional__icon" aria-hidden="true"></i><h1 class="viewers">url</h1><h1 class="viewers">${data.stream.channel.url}</h1></div><div class="div__additional__child div__additional__child--status"><i class="fa fa-comment div__additional__icon" aria-hidden="true"></i><h1 class="viewers">status</h1><h1 class="viewers">${data.stream.channel.status}</h1></div></div></div>`
         
         
         $('main').append(div__general__online);
@@ -96,11 +97,17 @@ const functionDom = (data, name, iconClass, additionalClass) => {
            }
        });
         
+       $('.' + iconCloseClass).click(function(){
+          $('.' + additionalClass).css('display', 'none'); 
+           isClosed = true;
+       });
+       
+        
     }
     else{
         let div__general__offline = `<div class="row"><div class="div__general div__flexbox div__flexbox--center div__flexbox--spacebetween"><span class="span__offline">offline</span><span class="span__name">${name}</span><img class="img__thumbnail" src="css/img/no-thumbnail.jpg"><i class="fa fa-expand expandicon ${iconClass}" aria-hidden="true"></i></div></div>`;
         
-        let div__additional__offline = `<div class="row"><div class="div__additional div__additional--offline ${additionalClass}"><h2>no additional info :/</h2></div></div>`;
+        let div__additional__offline = `<div class="row"><div class="div__additional div__additional--offline iconrelative ${additionalClass}"><i class="fa fa-times-circle-o icon__close ${iconCloseClass}" aria-hidden="true"></i><h2>no additional info :/</h2></div></div>`;
 
         
         //online doesn't work because it has display none in ss
@@ -119,6 +126,12 @@ const functionDom = (data, name, iconClass, additionalClass) => {
             isClosed = true;
            }
        });
+        
+       $('.' + iconCloseClass).click(function(){
+          $('.' + additionalClass).css('display', 'none'); 
+           isClosed = true;
+       });
+       
         
     }
 
