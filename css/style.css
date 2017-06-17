@@ -55,6 +55,10 @@ section {
     display: flex;
 }
 
+.div__flexbox--wrap{
+    flex-direction: row;
+}
+
 .div__flexbox--center{
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
@@ -111,13 +115,76 @@ main{
     padding: 15px 40px 15px 40px;
 }
 
+
+
 .div__additional{
-    margin: 0 auto;
-    margin-top: 10px;
-    max-width: 80%;
-    border: 2px solid #D2527F;
-    height: auto;
-    padding: 15px 40px 15px 40px;
+    width: 100%;
+    height: 80vh;
+    border: 4px solid #446CB3;
+    margin-top: 5px;
+}
+
+.div__additional--offline{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.div__additional__child{
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div__additional__child--offline{
+    width: 100%;
+    height: 100%;
+}
+
+.div__additional__child--game{
+    background-color: aqua;
+    float: left;
+    border-right: 1px solid red;
+    border-bottom: 1px solid red;
+}
+
+.div__additional__child--viewers{
+    background-color: aquamarine; 
+    float: right;
+    border-left: 1px solid red;
+    border-bottom: 1px solid red;
+}
+
+.div__additional__child--url{
+    background-color: cadetblue;
+    float: left;
+    border-top: 1px solid red;
+    border-right: 1px solid red;
+}
+
+.div__additional__child--status{
+    background-color: chocolate;
+    float: right;
+    border-top: 1px solid red;
+    border-left: 1px solid red;
+}
+
+
+.div__additional__icon{
+    display: block;
+    font-size: 4rem;
+    color: #000000;
+}
+
+.viewers{
+    display: block;
+    color: black;
+    margin-bottom: 0px;
 }
 
 .display__block{
@@ -130,9 +197,10 @@ span{
     color: #000000;
 }
 
+
+
 .flex-container{
-    width: 80%;
-    
+  width: 80%;    
   margin: 0 auto;
   list-style: none;
   border: 1px solid silver;
@@ -142,18 +210,11 @@ span{
   display: -ms-flexbox;
   display: -moz-flex;
   display: -webkit-flex;
-  display: flex;
-    
-      -webkit-flex-wrap: wrap;
+  display: flex;   
+  -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
-    justify-content: space-between !important;
+  justify-content: space-between !important;
 
-}
-
-.span__name--additional{
-    margin-top: 10%;
-    min-width: 25%;
-    text-align: center;
 }
 
 .span__online{
@@ -170,19 +231,8 @@ span{
     border-radius: 15%;
 }
 
-.icon{
-    font-size: 7rem;
-    cursor: pointer;
-}
 
-.div__triangle{
-  width: 0;
-  height: 0;
-  display: inline;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 38px solid #FFFFFF;
-}
+
 
 /*FOOTER*/
 footer{
@@ -214,10 +264,11 @@ h3{
     margin-right: 20px;
 }
 
-.loadingicon{
+.expandicon{
     font-size: 4rem;
     margin-top: 10px;
     margin-left: 10px;
+    cursor: pointer;
 }
 
 .githubicon{

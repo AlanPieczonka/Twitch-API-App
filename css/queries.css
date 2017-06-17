@@ -47,20 +47,48 @@
         margin-top: 0px;
     }
     
+    h2{
+        font-size: 6rem;
+    }
+    
     .img__thumbnail{
         width: 60% !important;
     }
     
-
+ 
+    
+    
+    .div__additional__child--game{
+        width: 100%;
+    }
+        .div__additional__child--viewers{
+        width: 100%;
+    }
+        .div__additional__child--url{
+        width: 100%;
+    }
+        .div__additional__child--status{
+        width: 100%;
+    }
 }
 
 
 
 /* Small phones: from 0 to 480px */
 @media only screen and (max-width: 480px) {
+    
+
     .img__thumbnail{
         margin-top: 10px;
         width: 99% !important;
+    }
+    
+    .div__additional--offline{
+        height: 40vh;
+    }
+    
+       h2{
+        font-size: 3.5rem;
     }
    
 }

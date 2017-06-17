@@ -29,7 +29,7 @@ class Stream {
 const myStream = new Stream();
 
 for(let i=0; i<5; i++){
-    console.log(myStream.people[i]); //interesting
+    console.log(myStream.people[i]);
 }
 
 
@@ -84,23 +84,23 @@ const functionDom = (data, name) => {
     loading__icon.style.display = 'none';
     
     if(data.stream!==null){
-/*    document.querySelector('.span__name').innerHTML = name;
-    document.querySelector('.img__thumbnail').src = data.stream.channel.video_banner;
-    document.querySelector('.span__offline').style.display = "none";
-    document.querySelector('.span__online').style.display = "block";*/
+
+        let div__general__online = `<div class="row"><div class="div__general div__flexbox div__flexbox--center div__flexbox--spacebetween"><span class="span__online"><a href="${data.stream.channel.url}" target="_blank">online</a></span><span class="span__name">${name}</span><img class="img__thumbnail" src="${data.stream.channel.video_banner}"><i class="fa fa-expand expandicon" aria-hidden="true"></i></div></div>`
         
-        let div__general_online = '<div class="row"><div class="div__general div__flexbox div__flexbox--center div__flexbox--spacebetween"><span class="span__online"><a href="' + data.stream.channel.url +'" target="_blank">online</a></span><span class="span__name">' + name + '</span><img class="img__thumbnail" src="' + data.stream.channel.video_banner + '"><i class="fa fa-arrow-circle-down icon" aria-hidden="true"></i></div></div>';
+        let div__additional__online = `<div class="row"><div class="div__additional"><div class="div__additional__child div__additional__child--game"><i class="fa fa-gamepad div__additional__icon" aria-hidden="true"></i><h1 class="viewers">game</h1><h1 class="viewers">${data.stream.channel.game}</h1></div><div class="div__additional__child div__additional__child--viewers"><i class="fa fa-gamepad div__additional__icon" aria-hidden="true"></i><h1 class="viewers">viewers</h1><h1 class="viewers">${data.stream.viewers}</h1></div><div class="clearfix"></div><div class="div__additional__child div__additional__child--url"><i class="fa fa-external-link div__additional__icon" aria-hidden="true"></i><h1 class="viewers">url</h1><h1 class="viewers">${data.stream.channel.url}</h1></div><div class="div__additional__child div__additional__child--status"><i class="fa fa-comment div__additional__icon" aria-hidden="true"></i><h1 class="viewers">status</h1><h1 class="viewers">${data.stream.channel.status}</h1></div></div>$</div>`
         
-        $(main).append(div__general_online);
+        $(main).append(div__general__online);
+        $(main).append(div__additional__online);
     }
     else{
-        let div__general_offline = '<div class="row"><div class="div__general div__flexbox div__flexbox--center div__flexbox--spacebetween"><span class="span__offline">offline</span><span class="span__name">' + name + '</span><img class="img__thumbnail" src="css/img/no-thumbnail.jpg"><i class="fa fa-arrow-circle-down icon" aria-hidden="true"></i></div></div>';
+        let div__general__offline = `<div class="row"><div class="div__general div__flexbox div__flexbox--center div__flexbox--spacebetween"><span class="span__offline">offline</span><span class="span__name">${name}</span><img class="img__thumbnail" src="css/img/no-thumbnail.jpg"><i class="fa fa-expand expandicon" aria-hidden="true"></i></div></div>`;
         
-        let div__additional_offline = '<div class="row"><div class="div__additional div__flexbox div__flexbox--center"><h2>no additional info!</div></div>';
+        let div__additional__offline = `<div class="row"><div class="div__additional div__additional--offline"><h2>no additional info :/</h2></div></div>`;
+
         
         //online doesn't work because it has display none in ss
-        $(main).append(div__general_offline); 
-        $(main).append(div__additional_offline); 
+        $(main).append(div__general__offline); 
+        $(main).append(div__additional__offline); 
         //that's the key, using jQuery because Vanilla JS is too tricky in this one
     }
 }
