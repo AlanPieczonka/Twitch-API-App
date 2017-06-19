@@ -55,7 +55,11 @@
         width: 60% !important;
     }
     
- 
+    
+/*    .div__additional--offline{
+         height: calc(100% + 40vh);
+    }
+*/
     
     
     .div__additional__child--game{
@@ -69,6 +73,18 @@
     }
         .div__additional__child--status{
         width: 100%;
+    }
+    
+    .icon__close{
+        display: none;
+    }
+    
+    .icon__close--breakpoint{
+        display: block;
+    }
+    
+    .githubicon{
+        z-index: 3;
     }
 }
 
@@ -90,6 +106,15 @@
        h2{
         font-size: 3.5rem;
     }
+    
+    .div__additional--offline{
+        height: 100vh;
+    }
+    
+    .lastheading{
+        display: none;
+    }
+    
    
 }
 

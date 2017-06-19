@@ -68,21 +68,21 @@ myPromise.then((bobross) => {
 //make this function to take 2 parametres, data and name to always display streamer's name;
 const functionDom = (data, name, iconClass, additionalClass, iconCloseClass) => {
     
-    const main = document.getElementsByTagName('main')[0];
-    const loading__icon = document.getElementsByClassName('loadingicon')[0];
+    const main = document.getElementById('mainDiv');
+    const loadingIcon = document.getElementById('loadingicon');
     
-    loading__icon.style.display = 'none';
+    loadingIcon.style.display = 'none';
     
     if(data.stream!==null){
 
-        let div__general__online = `<div class="row"><div class="div__general div__flexbox div__flexbox--center div__flexbox--spacebetween "><span class="span__online"><a href="${data.stream.channel.url}" target="_blank">online</a></span><span class="span__name">${name}</span><img class="img__thumbnail" src="${data.stream.channel.video_banner}"><i id="testing" class="fa fa-expand expandicon ${iconClass}" aria-hidden="true"></i></div></div>`
+        let div__general__online = `<div class="div__general div__flexbox div__flexbox--center div__flexbox--spacebetween "><span class="span__online"><a href="${data.stream.channel.url}" target="_blank">online</a></span><span class="span__name">${name}</span><img class="img__thumbnail" src="${data.stream.channel.video_banner}"><i id="testing" class="fa fa-expand expandicon ${iconClass}" aria-hidden="true"></i></div>`
         
-        let div__additional__online = `<div class="row"><div class="div__additional ${additionalClass}"><div class="div__additional__child div__additional__child--game"><i class="fa fa-gamepad div__additional__icon" aria-hidden="true"></i><h1 class="viewers">game</h1><h1 class="viewers">${data.stream.channel.game}</h1></div><div class="div__additional__child div__additional__child--viewers iconrelative">                        <i class="fa fa-times-circle-o icon__close ${iconCloseClass}" aria-hidden="true"></i>
-<i class="fa fa-gamepad div__additional__icon" aria-hidden="true"></i><h1 class="viewers">viewers</h1><h1 class="viewers">${data.stream.viewers}</h1></div><div class="clearfix"></div><div class="div__additional__child div__additional__child--url"><i class="fa fa-external-link div__additional__icon" aria-hidden="true"></i><h1 class="viewers">url</h1><h1 class="viewers">${data.stream.channel.url}</h1></div><div class="div__additional__child div__additional__child--status"><i class="fa fa-comment div__additional__icon" aria-hidden="true"></i><h1 class="viewers">status</h1><h1 class="viewers">${data.stream.channel.status}</h1></div></div></div>`
+        let div__additional__online = `<div class="div__additional ${additionalClass}"><div class="div__additional__child div__additional__child--game position--relative"><i class="fa fa-times-circle-o icon__close--breakpoint ${iconCloseClass}" aria-hidden="true"></i><i class="fa fa-gamepad div__additional__icon" aria-hidden="true"></i><h1 class="additional__title">game</h1><h1 class="additional__info--span">${data.stream.channel.game}</h1></div><div class="div__additional__child div__additional__child--viewers position--relative">                        <i class="fa fa-times-circle-o icon__close ${iconCloseClass}" aria-hidden="true"></i>
+<i class="fa fa-gamepad div__additional__icon" aria-hidden="true"></i><h1 class="additional__title">viewers</h1><h1 class="additional__info--span">${data.stream.viewers}</h1></div><div class="clearfix"></div><div class="div__additional__child div__additional__child--url"><a href="${data.stream.channel.url}" target="_blank"><i class="fa fa-external-link div__additional__icon" aria-hidden="true"></i></a><h1 class="additional__title">url</h1><h1 class="additional__info--span">${data.stream.channel.url}</h1></div><div class="div__additional__child div__additional__child--status"><i class="fa fa-comment div__additional__icon" aria-hidden="true"></i><h1 class="additional__title">status</h1><h1 class="additional__info--span">${data.stream.channel.status}</h1></div></div>`
         
         
-        $('main').append(div__general__online);
-        $('main').append(div__additional__online);
+        $(main).append(div__general__online);
+        $(main).append(div__additional__online);
         
         //make the same thing like uniqe class for the expandicon and it should fucking work
         let isClosed= true;
@@ -105,9 +105,11 @@ const functionDom = (data, name, iconClass, additionalClass, iconCloseClass) => 
         
     }
     else{
-        let div__general__offline = `<div class="row"><div class="div__general div__flexbox div__flexbox--center div__flexbox--spacebetween"><span class="span__offline">offline</span><span class="span__name">${name}</span><img class="img__thumbnail" src="css/img/no-thumbnail.jpg"><i class="fa fa-expand expandicon ${iconClass}" aria-hidden="true"></i></div></div>`;
+        console.log("test");
         
-        let div__additional__offline = `<div class="row"><div class="div__additional div__additional--offline iconrelative ${additionalClass}"><i class="fa fa-times-circle-o icon__close ${iconCloseClass}" aria-hidden="true"></i><h2>no additional info :/</h2></div></div>`;
+        const div__general__offline = `<div class="div__general div__flexbox div__flexbox--center div__flexbox--spacebetween"><span class="span__offline">offline</span><span class="span__name">${name}</span><img class="img__thumbnail" src="css/img/no-thumbnail.jpg"><i class="fa fa-expand expandicon ${iconClass}" aria-hidden="true"></i></div>`;
+        
+        const div__additional__offline = `<div class="div__additional div__additional--offline position--relative ${additionalClass}"><i class="fa fa-times-circle-o icon__close--const ${iconCloseClass}" aria-hidden="true"></i><h2>no additional info :/</h2></div>`;
 
         
         //online doesn't work because it has display none in ss
@@ -115,7 +117,7 @@ const functionDom = (data, name, iconClass, additionalClass, iconCloseClass) => 
         $(main).append(div__additional__offline); 
         //that's the key, using jQuery because Vanilla JS is too tricky in this one
         
-        let isClosed= true;
+       let isClosed= true;
     
        $('.' + iconClass).click(function(){
            if(isClosed){
