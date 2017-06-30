@@ -44,14 +44,14 @@ section {
 }
 
 
-.div__flexbox{
+.flexbox{
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
 }
 
 
-.div__flexbox--center{
+.flexbox--center{
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
@@ -69,7 +69,7 @@ section {
     align-items: center;
 }
 
-.div__flexbox--spacebetween{
+.flexbox--spacebetween{
     justify-content: space-between !important;
 }
 
@@ -219,16 +219,16 @@ h2{
 }
 
 
-span{
+.span{
     font-size: 4rem;
     color: #000000;
 }
 
-.span__online{
+.span--online{
     color: #87D37C;
 }
 
-.span__offline{
+.span--offline{
     color: #F62459;
 }
 
@@ -247,7 +247,7 @@ span{
 footer{
   height: 80px;
 }
-.lastheading{
+.footer__div{
   float: right;
 }
 h3{
@@ -258,21 +258,21 @@ h3{
   font-family: sans-serif;
 }
 
-.twitchicon{
+.icon--twitch{
     font-size: 8rem;
     color: #000000;
     margin-top: 20px;
     margin-right: 20px;
 }
 
-.expandicon{
+.icon--expand{
     font-size: 4rem;
     margin-top: 10px;
     margin-left: 10px;
     cursor: pointer;
 }
 
-.githubicon{
+.icon--github{
     font-size: 5rem;
     color: #000000;
     position: relative;

@@ -1,6 +1,6 @@
 'use strict';
 
-const main = document.getElementById('mainDiv');
+const main = document.getElementById('main__div');
 const loadingIcon = document.getElementById('loadingicon');
 
 class StreamPeople{
@@ -69,11 +69,11 @@ class StreamOnline extends Stream {
     constructor(data,name,iconClass, additionalClass, iconCloseClass){
         super(data,name,iconClass, additionalClass, iconCloseClass);
     }
-    changeDom(){
-        $(main).append(`<div class="div__general div__flexbox div__flexbox--center div__flexbox--spacebetween "><span class="span__online"><a href="${this.data.stream.channel.url}" target="_blank">online</a></span><span class="span__name">${this.name}</span><img class="img__thumbnail" src="${this.data.stream.channel.video_banner}"><i id="testing" class="fa fa-expand expandicon ${this.iconClass}" aria-hidden="true"></i></div>`);
+    appendDom(){
+        $(main).append(`<div class="div__general flexbox flexbox--center flexbox--spacebetween "><span class="span span--online"><a href="${this.data.stream.channel.url}" target="_blank">online</a></span><span class="span span--name">${this.name}</span><img class="img__thumbnail" src="${this.data.stream.channel.video_banner}"><i id="testing" class="fa fa-expand icon--expand ${this.iconClass}" aria-hidden="true"></i></div>`);
         
         $(main).append(`<div class="div__additional ${this.additionalClass}"><div class="div__additional__child div__additional__child--game position--relative"><i class="fa fa-times-circle-o icon__close--breakpoint ${this.iconCloseClass}" aria-hidden="true"></i><i class="fa fa-gamepad div__additional__icon" aria-hidden="true"></i><h1 class="additional__title">game</h1><h1 class="additional__info--span">${this.data.stream.channel.game}</h1></div><div class="div__additional__child div__additional__child--viewers position--relative">                        <i class="fa fa-times-circle-o icon__close ${this.iconCloseClass}" aria-hidden="true"></i>
-<i class="fa fa-gamepad div__additional__icon" aria-hidden="true"></i><h1 class="additional__title">viewers</h1><h1 class="additional__info--span">${this.data.stream.viewers}</h1></div><div class="clearfix"></div><div class="div__additional__child div__additional__child--url"><a href="${this.data.stream.channel.url}" target="_blank"><i class="fa fa-external-link div__additional__icon" aria-hidden="true"></i></a><h1 class="additional__title">url</h1><h1 class="additional__info--span">${this.data.stream.channel.url}</h1></div><div class="div__additional__child div__additional__child--status"><i class="fa fa-comment div__additional__icon" aria-hidden="true"></i><h1 class="additional__title">status</h1><h1 class="additional__info--span">${this.data.stream.channel.status}</h1></div></div>`);
+<i class="fa fa-gamepad div__additional__icon" aria-hidden="true"></i><h1 class="additional__title">viewers</h1><h1 class="additional__info--span">${this.data.stream.viewers}</h1></div><div class="clearfix"></div><div class="div__additional__child div__additional__child--url"><a href="${this.data.stream.channel.url}" target="_blank"><i class="fa fa-external-link div__additional__icon" aria-hidden="true"></i></a><h1 class="additional__title">url</h1><a href="${this.data.stream.channel.url}"target="_blank"><h1 class="additional__info--span">${this.data.stream.channel.url}</h1></a></div><div class="div__additional__child div__additional__child--status"><i class="fa fa-comment div__additional__icon" aria-hidden="true"></i><h1 class="additional__title">status</h1><h1 class="additional__info--span">${this.data.stream.channel.status}</h1></div></div>`);
         
         this.buttonOnline();
     }
@@ -92,8 +92,8 @@ class StreamOffline extends Stream{
     }
     
     
-    changeDom(){
-        $(main).append(`<div class="div__general div__flexbox div__flexbox--center div__flexbox--spacebetween"><span class="span__offline">offline</span><span class="span__name">${this.name}</span><img class="img__thumbnail" src="css/img/no-thumbnail.jpg"><i class="fa fa-expand expandicon ${this.iconClass}" aria-hidden="true"></i></div>`);
+    appendDom(){
+        $(main).append(`<div class="div__general flexbox flexbox--center flexbox--spacebetween"><span class="span span--offline">offline</span><span class="span span--name">${this.name}</span><img class="img__thumbnail" src="css/img/no-thumbnail.jpg"><i class="fa fa-expand icon--expand ${this.iconClass}" aria-hidden="true"></i></div>`);
         
         $(main).append(`<div class="div__additional div__additional--offline position--relative ${this.additionalClass}"><i class="fa fa-times-circle-o icon__close--const ${this.iconCloseClass}" aria-hidden="true"></i><h2>no additional info :/</h2></div>`);
         
@@ -103,12 +103,6 @@ class StreamOffline extends Stream{
     buttonOffline(){
         super.buttonOffline();
     }
-}
-
-const myStreamPeople = new StreamPeople();
-
-for(let i=0; i<5; i++){
-    console.log(myStreamPeople.people[i]);
 }
 
 
@@ -129,26 +123,24 @@ const myAsyncFunction = (url) => {
   });
 }
 
-
+const myStreamPeople = new StreamPeople();
 
 //https://www.youtube.com/watch?v=yswb4SkDoj0
-let myPromise = myAsyncFunction('https://api.twitch.tv/kraken/streams/' + myStreamPeople.people[0]);
+const myPromise = myAsyncFunction('https://api.twitch.tv/kraken/streams/' + myStreamPeople.people[0]);
 myPromise.then((bobross) => {
     
     console.log(bobross);
-  //  functionDom(bobross, "BobRoss", "iconclass0", "additionalclass0", "iconcloseclass0");
     if(bobross.stream !== null){
-        
        console.log("Bobross is online");
        let myStreamOnline = new StreamOnline(bobross, "BobRoss", "iconclass0", "additionalclass0", "iconcloseclass0");
-       myStreamOnline.changeDom();
+       myStreamOnline.appendDom();
         
     }
     
     else{
         console.log("Bobross is offline");
         let myStreamOffline = new StreamOffline(bobross, "BobRoss", "iconclass0", "additionalclass0", "iconcloseclass0");
-        myStreamOffline.changeDom();
+        myStreamOffline.appendDom();
     } 
     
     return myAsyncFunction('https://api.twitch.tv/kraken/streams/' + myStreamPeople.people[1]);
@@ -157,13 +149,13 @@ myPromise.then((bobross) => {
     if(eslsc2.stream !== null){
        console.log("ESL is online");
        let myStreamOnline = new StreamOnline(eslsc2, "eslc2", "iconclass1", "additionalclass1", "iconcloseclass1");
-       myStreamOnline.changeDom();
+       myStreamOnline.appendDom();
     }
     
     else{
         console.log("ESL is offline");
         let myStreamOffline = new StreamOffline(eslsc2, "eslc2", "iconclass1", "additionalclass1", "iconcloseclass1");
-        myStreamOffline.changeDom();
+        myStreamOffline.appendDom();
     } 
     
     return myAsyncFunction('https://api.twitch.tv/kraken/streams/' + myStreamPeople.people[2]);
@@ -177,14 +169,14 @@ myPromise.then((bobross) => {
         
        console.log("Twitch is online");
        let myStreamOnline = new StreamOnline(twitch, "twitch", "iconclass2", "additionalclass2", "iconcloseclass2");
-       myStreamOnline.changeDom();
+       myStreamOnline.appendDom();
         
     }
     
     else{
         console.log("Twitch is offline");
         let myStreamOffline = new StreamOffline(twitch, "twitch", "iconclass2", "additionalclass2", "iconcloseclass2");
-        myStreamOffline.changeDom();
+        myStreamOffline.appendDom();
     } 
     
 }).catch((error) => {
